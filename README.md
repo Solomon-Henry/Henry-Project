@@ -13,12 +13,12 @@ Project's Locations List:
 2 Dropship
 3 Hammond Labs
 4 Estates
-5 Trapdoor
+5 Secret Trapdoor
 6 Phase Driver
 7 Solar Array
 8 Bonsai Palace
-9 Prison Ship
-10 Prison Cell
+9 Champion's Podium  
+10 Prison Dropship
 
 
 Project World Map:
