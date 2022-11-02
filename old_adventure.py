@@ -357,4 +357,4 @@ def Game_Loop():
 def main():
     GoTo(0)
     Game_Loop()
-main()
+#main()
