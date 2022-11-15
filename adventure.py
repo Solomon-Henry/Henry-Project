@@ -1,4 +1,4 @@
-# New Reworked Version for Project 3. (Unfinished Sketch)
+# New Reworked Version for Project 3. 
 
 from Location_Data import Location_Dict
 
@@ -61,12 +61,12 @@ class Stop:
         elif command == Text_Commands[1]:
             #Prompt
             prompt_str = Text[len(command)+2:]
-            user_response = input(prompt_str)
+            user_response = input(prompt_str+" ")
             Stop.User_Command(user_response)
         elif command == Text_Commands[2]:
             #Set
             set_str = Text[len(command)+2:]
-            Name = input(set_str)
+            Name = input(set_str+" ")
         elif command == Text_Commands[3]:
             Correct_Continue = Text[len(command)+2:]
             Correct_Answer = Location_Dict[int(Stop.Id)+1]["Name"] 
@@ -91,25 +91,39 @@ class Stop:
             for m in Printed_Options:
                 options_str = "\n" + m[0] + ": " + m[1]
                 print(options_str) 
-            user_response = input("\nChoose one of the options above, i.e the corresponding name: ") 
+            user_choice = "\nChoose one of the options above, i.e the corresponding name: "
+            def check():
+                str  = input(user_choice)
+                Surrounding_Locations = []
+                for name in Printed_Options:
+                    Surrounding_Locations.append(name[0])
+                is_option = True if str in Surrounding_Locations else False
+                if str == "" or not is_option:
+                    print("\nNo rushing! Please type in one of the options")
+                    str = check()    
+                return str
+            user_response = check()
             if user_response == Correct_Answer:
                 print("\nGreat choice. You continue with your life.")
                 input(Correct_Continue)
             else: 
-                input("\nBad decision, you will now be dead\nPress enter to continue")
-                Death_Status =  True     
+                input("\nBad decision, you will now be dead\nPress enter to continue ")
+                Death_Status =  True    
+             
     def User_Command(Stop,user_str):
         global Quit_Status
         for i in User_Commands:
             #Functionality for user_command to be set up
             if user_str.find(i) != -1:
                 if i == "EXAMINE":
+                    print("Examine Info: ")
                     print(Stop.Location_Info)
-                    input("\nPress Enter to Continue")
+                    input("\nPress Enter To Return To Story")
                     pass
                 elif i == "HELP":
-                    print("\nValid Commands:\nEXAMINE: Find info on current location\nHELP: Display all valid commands\nQUIT: End game abruptly")
-                    input("\Press enter to continue")
+                    print("Help info: ")
+                    print("\nValid Commands:\n\nEXAMINE: Find info on current location\nHELP: Display all valid commands\nQUIT: End game abruptly\n")
+                    input("Press enter To Return To Story")
                 elif i == "QUIT":
                     input("\nYou have quit the game.\nPress enter to continue to the end of the game :(")
                     Quit_Status = True
