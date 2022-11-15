@@ -1,21 +1,21 @@
 from Text_Data import*
 Location_Dict = {
-    "Start" : {
+    0 : {
         "Name" : "",
         "Text_List" : Stop_A_Text_List,
         "Examine" : ""
     },
-    "Quit" : {
+    13 : {
         "Name" : "",
         "Text_List" : Stop_Quit_Text_List,
         "Examine" : ""
     },
-    "Death" : {
+    12 : {
         "Name" : "",
         "Text_List" : Stop_Death_Text_List,
         "Examine" : ""
     },
-    "Final" : {
+    11 : {
         "Name" : "",
         "Text_List" : Stop_F_Text_List,
         "Examine" : ""
@@ -80,33 +80,37 @@ Location_Dict = {
         "Examine" : "\nYou're now going back to jail in a Prison Dropship, you didn't forget you were a criminal right?",
         "Was_Visited" : False
     },
-    11 : {
+    14 : {
         "Name" : "Oasis",
         "Examine" : "A nice tourist trap with lots of places to relax, conveniently placed right at the edge of the map"
     },
-    12 : {
+    15 : {
         "Name" : "Turbine",
         "Examine" : "\nA place wih a giant turbine which keeps the floating city of Olympus afloat"
     },
-    13 : {
+    16 : {
         "Name" : "Energy Deposit",
         "Examine" : "\nJust Olympus's main power grid. May be important later"
     },
-    14 : {
+    17 : {
         "Name" : "Grow Towers",
         "Examine" : "\nA place where large spiraling towers are covered with greenery"
     },
-    15 : {
+    18 : {
         "Name" : "Hydroponics",
         "Examine" : "\nA small part of Olympus that is host to many plants, serving as their watering system"
     },
-    16 : {
+    19 : {
         "Name" : "Orbital Cannon",
         "Examine" : "\nOrbital Cannon. It's name speaks for itself"
     },
-    17 : {
+    20 : {
         "Name" : "Icarus",
         "Examine" : "\nA wrecked ship containing the deadlist virus in the the galaxy. Best not to go there"
+    },
+    21 : {
+        "Name" : "OOB",
+        "Examine" : ""
     }
 }
 

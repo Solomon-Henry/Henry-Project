@@ -161,10 +161,10 @@ Stop_7:Stop = Stop(7)
 Stop_8:Stop = Stop(8)
 Stop_9:Stop = Stop(9)
 Stop_10:Stop = Stop(10)
-Stop_Start:Stop = Stop("Start")
+Stop_Start:Stop = Stop(0)
 Stop_Quit:Stop = Stop("Quit")
 Stop_Death:Stop = Stop("Death")
-Stop_Final:Stop = Stop("Final")
+Stop_Final:Stop = Stop(11)
 Stop_List = [Stop_Start,Stop_1,Stop_2,Stop_3,Stop_4,Stop_5,Stop_6,Stop_7,Stop_8,Stop_9,Stop_10,Stop_Quit,Stop_Death,Stop_Final]
 
 ## Game_Loop (Done)
