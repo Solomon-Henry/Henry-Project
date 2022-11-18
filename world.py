@@ -1,13 +1,12 @@
-from general_functions import*
-from location import*
-from Location_Data import*
+from general_functions import *
+from location import Location
+from Location_Data import Location_Dict
 
 class World:
     def location_intialization(World):
         Main_Story_Sequence = []
-        Alt_Story_Sequence = []
-        for i in range(len(Location_Dict)):    
-            Main_Story_Sequence[i] = Location(Location_Dict[i].get("Name"),Location_Dict[i].get("Text_List"),Location_Dict[i].get("Examine"))
+        for ID in range(len(Location_Dict)):    
+            Main_Story_Sequence[ID] = Location(Location_Dict[ID].get("Name"),Location_Dict[ID].get("Text_List"),Location_Dict[ID].get("Examine"))
         return Main_Story_Sequence
         pass
     def id_to_map_coords(World):
@@ -45,8 +44,13 @@ class World:
             World.current_location_id += 1
         else:
             World.current_location_id = jump
-    def get_location_name(World):
-        return Location_Dict[World.current_location_id].get("Name")
+    def get_location(World,type):
+        if type == "ID":
+            return World.current_location_id
+        elif type == "NAME":
+            return Location_Dict[World.current_location_id].get("Name")
+        elif type == "INSTANCE":
+            return World.main_sequence[World.current_location_id]
     def get_surrounding_locations(World):
         #Return surrounding locations by id
         #North, South, West, East
