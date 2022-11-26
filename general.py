@@ -115,14 +115,14 @@ def Find_Execute_Command(loc_name,str):
                 return response
             user_response = check()
             correct_response = Location_Dict[location_id+1].get("Name")
-            if user_response == correct_response:
-                print("\nGreat choice. You continue with your life.")
-                input(Text)
-            else: 
-                input("\nBad decision, you will now be dead\nPress enter to continue ")
-                current_player.set_status("DEATH")
-                pass
-            pass
+            def chances(rep):
+                if rep == correct_response:
+                    print("\nGreat choice. You continue with your life.")
+                    input(Text)
+                else:
+                    recursive_rep = input("\nBad decision, you ended up dead\nPress type in another option: ")
+                    chances(recursive_rep)
+            chances(user_response)
 def find_run_user_command(loc_instance,player,str):
         if str == "":
             pass
