@@ -1,4 +1,11 @@
 from Text_Data import*
+Game_Map = [
+        ["OOB","Oasis","Turbine","Energy Deposit"],
+        ["OOB","Estates","Hammond Labs","Grow Towers"],
+        ["Hydroponis","Phase Driver","Solar Array","Orbital Cannon"],
+        ["OOB","OOB","Bonsai Palace","Bonsai Palace","Icarus"],
+        ["OOB","OOB","OOB","OOB"]
+        ]
 Location_Dict = {
     0 : {
         "Name" : "",
@@ -97,7 +104,7 @@ Location_Dict = {
         "Examine" : "\nA place where large spiraling towers are covered with greenery"
     },
     18 : {
-        "Name" : "Hydroponics",
+        "Name" : "Hydroponis",
         "Examine" : "\nA small part of Olympus that is host to many plants, serving as their watering system"
     },
     19 : {
@@ -110,8 +117,7 @@ Location_Dict = {
     },
     21 : {
         "Name" : "OOB",
-        "Examine" : ""
+        "Examine" : "\nInaccessible Area"
     }
 }
-
 
