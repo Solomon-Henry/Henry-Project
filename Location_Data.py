@@ -42,7 +42,7 @@ Location_Dict = {
     3 : {
         "Name" : "Hammond Labs",
         "Text_List" : Stop_2_Text_List,
-        "Examine" : "\nYou're at Hammond Labs with an angry enemy squad with guns",
+        "Examine" : "\nA great place with ",
         "Was_Visited" : False
     },
     4 : {

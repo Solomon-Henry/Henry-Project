@@ -3,9 +3,10 @@ from location import Location
 from Location_Data import Location_Dict,Game_Map
 
 class World:
+    graphic_mode:bool = False
     def location_intialization(World): #Initializes list of locations
         for ID in range(len(Location_Dict)):    
-            location_list.append(Location(Location_Dict[ID].get("Name"),Location_Dict[ID].get("Examine"),Location_Dict[ID].get("Text_List")))  
+            location_list.append(Location(Location_Dict[ID].get("Name"),Location_Dict[ID].get("Examine"),Location_Dict[ID].get("Text_List")))     
     def __init__(World): # Constructor
         World.location_intialization() 
         World.current_location_id = 0

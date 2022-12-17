@@ -1,5 +1,4 @@
 from Location_Data import Location_Dict,Game_Map
-game_cnt = [0,10]
 player_list = []
 location_list = []
 min_max_values = (0,3)
@@ -120,8 +119,8 @@ def Find_Execute_Command(loc_name,str):
                     print("\nGreat choice. You continue with your life.")
                     input(Text)
                 else:
-                    recursive_rep = input("\nBad decision, you ended up dead\nPress type in another option: ")
-                    chances(recursive_rep)
+                    input("\nBad decision, you have achieved the death ending\nPress enter to see continue: ")
+                    current_player.setStatus("DEATH")
             chances(user_response)
 def find_run_user_command(loc_instance,player,str):
         if str == "":

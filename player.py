@@ -16,14 +16,15 @@ class Player:
         Player.points = 0
         Player.Death_Status = False
         Player.Quit_Status = False
+    def update_save_data(Player):
+
+        pass
     def get_name(Player):
         return Player.name
     def set_status(Player,type):
         if type == "DEATH":
-            Player.move(12)
             Player.Death_Status = True
         elif type == "QUIT":
-            Player.move(13)
             Player.Quit_Status = True
     def set_name(Player,name):
         Player.name = name
@@ -36,7 +37,12 @@ class Player:
         Player.move_count += 1
         Story_Progress = (Player.move_count/10) * 100
         print(f"\nStory Progress: {Story_Progress}%\nTotal Score: {Player.points} points")
-        input("\nPress enter to continue the story: ")
+        
+        
+    def game_loop(Player):
+        for location_id in range(10):
+            Player.move(location_id)
+        Player.ending()
     def move(Player,jump=-1,display=True):
         if not Player.Death_Status and not Player.Quit_Status:
             if jump == -1:
@@ -47,6 +53,21 @@ class Player:
             location_list[Player.location_id].Script_Runner()
             if display:
                 Player.display_progress()
+    def ending(Player):
+        if Player.Death_Status:
+            #Death ending
+            Player.move(12,False)
+            pass
+        elif Player.Quit_Status:
+            #Quit ending
+            Player.move(13,False)
+            pass
+        else: 
+            #Good Ending
+            Player.move(11,False)
+            pass
+        Player.restart()
+        pass
     def restart(Player):
         restart_prompt = input("\nYou can restart by typing 'yes' or quit by pressing enter here: ")
         if restart_prompt == "Yes" or restart_prompt == "yes": 
@@ -54,7 +75,8 @@ class Player:
             Player.Quit_Status = False
             Player.Finish_Status = False
             Player.move_count = 0
-            game_cnt[0] = 0
+            Player.game_loop()
         else:
-            Player.move(11,False)
-            game_cnt[0]=game_cnt[1]+1
+            #Good Ending
+            input("\nGreat job on finishing my game. Hope you enjoyed my project!")
+            
