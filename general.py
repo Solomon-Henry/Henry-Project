@@ -2,7 +2,7 @@ from Location_Data import Location_Dict,Game_Map
 player_list = []
 location_list = []
 min_max_values = (0,3)
-User_Commands = ["EXAMINE","HELP","QUIT"]
+User_Commands = ["EXAMINE","HELP","QUIT","SAVE","LOAD"]
 Text_Commands = ["TEXT","PROMPT","SET","CHOICE","|USERNAME|"]
 def get_surrounding_locations(id): #Returns numerical ids of surrounding locations
     current_coords = translate("ID",id,"MAP_COORD")
@@ -73,11 +73,12 @@ def min_max(val):
         ans = max
     return ans
 def Find_Execute_Command(loc_name,str): 
+        retval = None
         print()
         location_id = translate("NAME",loc_name,"ID")
         current_location = location_list[location_id]
         command = str[str.index("|")+1:str[str.index("|")+1:].index("|")+str.index("|")+1]
-        current_player = player_list[0]
+        current_player = player_list[-1]
         Text = str
         Text = str[len(command)+2:]
         check_username = Text.find(Text_Commands[4])
@@ -87,7 +88,7 @@ def Find_Execute_Command(loc_name,str):
             print(Text)
         elif command == Text_Commands[1]:
             user_input = input(Text+" ")
-            find_run_user_command(current_location,current_player,user_input)
+            retval = find_run_user_command(current_location,current_player,user_input)
         elif command == Text_Commands[2]:
             user_input = input(Text+" ")
             current_player.set_name(user_input)
@@ -96,7 +97,7 @@ def Find_Execute_Command(loc_name,str):
             options_text = []
             for id in option_ids:
                 text = [None,None]
-                text[0] = Location_Dict[id].get("Name") + ":"
+                text[0] = "\n"+Location_Dict[id].get("Name") + ":"
                 text[1] = Location_Dict[id].get("Examine")
                 options_text.append(text)
             for option in options_text:
@@ -120,9 +121,12 @@ def Find_Execute_Command(loc_name,str):
                     input(Text)
                 else:
                     input("\nBad decision, you have achieved the death ending\nPress enter to see continue: ")
-                    current_player.setStatus("DEATH")
+                    current_player.set_status("DEATH")
+                    retval = True
             chances(user_response)
+        return retval
 def find_run_user_command(loc_instance,player,str):
+        retval = None
         if str == "":
             pass
         elif str.find(User_Commands[0]) != -1:
@@ -131,10 +135,56 @@ def find_run_user_command(loc_instance,player,str):
             input("\nPress Enter To Return To Story")
         elif str.find(User_Commands[1]) != -1:
             print("Help info: ")
-            print("\nValid Commands:\n\nEXAMINE: Find info on current location\nHELP: Display all valid commands\nQUIT: End game abruptly\n")
+            print("\nValid Commands:\n\nEXAMINE: Find info on current location\nHELP: Display all valid commands\nQUIT: End game abruptly\nnSAVE: Create a save file which you can nanme\nLOAD: Load in a pre-made save file")
             input("Press enter To Return To Story")
         elif str.find(User_Commands[2]) != -1:
             input("\nYou have quit the game.\nPress enter to continue to the end of the game :(")
             player.set_status("QUIT")
+            retval = True
+        elif str.find(User_Commands[3]) != -1:
+            #Save
+            save_data_action("WRITE")
+        elif str.find(User_Commands[4]) != -1:
+            #Load
+            save_data_action("READ")
+            retval = True
         else:
             pass
+        return retval
+def save_file_exists(name):
+    try:
+        file = open(name,"r")
+        file.close()
+        return True
+    except:
+        return False
+
+def prompt(str):
+    rep = input(str)
+    return rep
+def save_data_action(action,recur=False):
+    if action == "WRITE":
+        save_file_name = prompt("\nEnter name of new save file you wish to create: ") + ".txt"
+        if not save_file_exists(save_file_name):
+            save_file = open(save_file_name,"w")
+            save_file.write(player_list[0].save_data)
+            save_file.close()
+            print(f"\nSave file {save_file_name} has been created.")
+            input("\nPress Enter to continue")
+        else:
+            print("\nSave file with that name already exists.\nPlease enter a valid name")
+            save_data_action("WRITE",True)
+    elif action == "READ":
+        save_file_name = prompt("\nEnter name of new save file you wish to load: ") + ".txt"
+        if save_file_exists(save_file_name):
+            save_file = open(save_file_name,"r")
+            save_data = []
+            for line in save_file:
+                save_data.append(line)
+            save_file.close()
+            input(f"\nSave file {save_file_name} has been loaded.\nPress Enter to continue: ")
+            player_list[0].set_status("LOAD",save_data)
+        else:
+            print("\nNo save file with that name exists.\nPlease enter a valid name")
+            save_data_action("READ",True)
+        pass

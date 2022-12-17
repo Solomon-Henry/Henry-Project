@@ -2,8 +2,11 @@ from general import *
 from Location_Data import Location_Dict
 class Location:
     def Script_Runner(Location): # To be updated to run its own script
+        breakout = False
         for text in Location.text_list:
-            Find_Execute_Command(Location.name,text)
+            if breakout:
+                break
+            breakout = Find_Execute_Command(Location.name,text)
     def __init__(Location,name,info,text_list=""): # Constructor
         Location.name = name
         Location.id = Location.location_id_init()

@@ -1,13 +1,13 @@
 Game_Title:str = "|TEXT|\n[Apex Adventures: Mad Maggie]\n"
 Game_Description:str = "|TEXT|\nGame Description:\nYou are, fellow adventurer, are the fiercest warlord the universe has ever met.\nUnfortunately, you've been sentenced to fight again and again in the Apex Games\nA bloodsport competition where squads of 3 battle to the death,\nuntil you are eventually killed with no chance of revival."
-Game_Instructions:str = "|PROMPT|\nGame Instructions:\nTo progress through the game simply press the enter key.\nValid Commands:\nEXAMINE: Find info on current location\nHELP: Display all valid commands\nQUIT: End game abruptly\nHave fun!"
+Game_Instructions:str = "|PROMPT|\nGame Instructions:\nTo progress through the game simply press the enter key.\nValid Commands:\nEXAMINE: Find info on current location\nHELP: Display all valid commands\nQUIT: End game abruptly\nSAVE: Create a save file which you can nanme\nLOAD: Load in a pre-made save file\nThere are two ways this journey can end,\n1. You probably die somewhere along the road.\n2. Or maybe you manage to reach the end, becoming the Apex Champion!\n"
 Stop_A_Text_List = [Game_Title,"|PROMPT|\nPress Enter to Continue",Game_Description,"|SET|\nWhat will your name will be?",Game_Instructions,"|PROMPT|\nThe Apex Legends think you're all talk \nlets show em how bad you can be, shall we?"]
-Game_Credits_0 = "|TEXT|Thanks for playing My Project. \nIt took a while to do \nso hopefully I'll get a good grade!\n:)"
+Game_Credits_0 = "|TEXT|\n*GOOD ENDING*\nYou have become the Apex Champion! \nCongrats :)\n \nThanks for playing My Project. \nIt took a while to do \nso hopefully I'll get a good grade!\n:)"
 Game_Copyright = "|TEXT|\n© 2022 Solomon Henry Corporations"
 Stop_F_Text_List = [Game_Credits_0,Game_Copyright]
-Stop_Quit_Text_0 = "|TEXT|You have quit.\n:(\nJust remember that you can try again!\n"
+Stop_Quit_Text_0 = "|TEXT|\n*QUIT ENDING*\nYou have quit.\n:(\nJust remember that you can try again!\n"
 Stop_Quit_Text_List = [Stop_Quit_Text_0]
-Stop_Death_Text_0 = "|TEXT|\n Sadly you died. No championship for you.\nMaybe next time "
+Stop_Death_Text_0 = "|TEXT|\n*DEATH ENDING*\nSadly you died. No championship for you.\nMaybe next time :("
 Stop_Death_Text_List = [Stop_Death_Text_0]
 Stop_0:str = "Courtroom"
 Stop_0_Text_0:str = "|TEXT|'|USERNAME|',the judge says"
